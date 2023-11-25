@@ -1,10 +1,6 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-using System.Runtime.Intrinsics.Arm;
-using System.Threading;
-using System.Transactions;
-
 class Program 
 {
     public const int WINDOW_WIDTH = 800;
@@ -18,13 +14,11 @@ class Program
         VideoMode mode = new VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT);
         window = new RenderWindow(mode, "Sorting algorithms");
         window.SetVerticalSyncEnabled(true);
-        window.Closed += (sender, args) => window.Close();
-        CreateRandomIntArray();
-        //array = BubbleSort(array);
-        int count = array.Length;
-        Clock clock = new Clock();
-
+        window.Closed += (sender, args) => window.Close();        
         window.SetFramerateLimit(30);
+
+        CreateRandomIntArray();
+        int count = array.Length;
         while (window.IsOpen)
         {
             window.Clear(Color.Black);
@@ -32,7 +26,6 @@ class Program
             {
                 while (count > 0)
                 {
-
                     for (int i = 1; i < count; i++)
                     {
                         if (array[i].value < array[i - 1].value)
